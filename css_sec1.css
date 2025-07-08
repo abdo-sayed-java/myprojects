@@ -1,1 +1,31 @@
-<>
+h1 
+{
+    color: rgb(144, 55, 55);
+}
+
+* 
+{
+    background-color: rgb(133, 180, 209);
+}
+.about-me 
+{
+    color: rgb(30, 5, 5);
+    font-size: 20px;
+}
+h2
+{
+    color: rgb(144, 55, 55);
+}
+.courses 
+{
+    color: rgb(30, 5, 5);
+    font-size: 20px;
+}
+.submit-grades 
+{
+    margin: 50px;
+    background-color: rgb(144, 55, 55);
+    padding: 10px;
+    border: 2px solid rgb(30, 5, 5);
+}
+
