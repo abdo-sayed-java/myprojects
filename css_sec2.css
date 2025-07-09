@@ -57,3 +57,36 @@ footer {
     flex: 1;
     text-align: center;
 }
+
+/* For tablets and below */
+@media (max-width: 900px) {
+    .continer {
+        width: 100%;
+        padding: 10px;
+    }
+    main img {
+        width: 100%;
+        height: auto;
+    }
+    header, footer, aside, main {
+        text-align: center;
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 600px) {
+    .continer {
+        flex-direction: column;
+    }
+    nav.go, nav.gg {
+        display: block;
+        margin: 10px 0;
+    }
+    main img {
+        width: 100%;
+        height: auto;
+    }
+    aside {
+        order: 3;
+    }
+}
