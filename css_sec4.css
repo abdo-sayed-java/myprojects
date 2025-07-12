@@ -1,0 +1,13 @@
+.frame {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px 20px;
+    border: 3px solid #888;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+body.dark-mode .frame {
+    background: #222;
+    border-color: #444;
+}

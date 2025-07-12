@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abdelrahman Sayed</title>
+    <link rel="stylesheet" type="text/css" href="css_sec4.css">
+    <style>
+        body.dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <div id="text">
+            <div>
+                <img src="images/images.png" alt="My Photo" width="200" height="200" style="border-radius: 50%;">
+                <h1>Abdelrahman Sayed</h1>
+                <p>That is me bio.</p>
+                <button class="add" style="background-color: aquamarine; border-radius: 20px;">add</button>
+                <button class="delete" style="background-color: rgb(158, 82, 82); border-radius: 20px;">remove</button>
+                <div class="newText"></div>
+            </div><br>
+        </div>
+        <button class="color" style="color: red; border-radius: 20px;">color red</button>
+        <button class="theme-toggle" style="border-radius: 20px;">Toggle Dark/Light Theme</button>
+    </div>
+    <script>
+        const addButton = document.querySelector('.add');
+        const deleteButton = document.querySelector('.delete');
+        const newTextContainer = document.querySelector('.newText');
+        const colorButton = document.querySelector('.color');
+        const themeToggle = document.querySelector('.theme-toggle');
+
+        addButton.addEventListener('click', function(e) {
+            let newText = document.createElement('p');
+            newText.textContent = 'Fun Fact';
+            newTextContainer.appendChild(newText);
+        });
+
+        deleteButton.addEventListener('click', function(e) {
+            if (newTextContainer.lastChild) {
+                newTextContainer.removeChild(newTextContainer.lastChild);
+            }
+        });
+        colorButton.addEventListener('click', function(e) {
+            document.body.style.color = 'red';
+        });
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
