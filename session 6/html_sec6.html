@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New session</title>
+    <title>Submit Form</title>
+    <link rel="stylesheet" href="css_sec6.css">
 </head>
+
 <body>
+    <form id="info">
+        <label>Name</label>
+        <input type="text" placeholder="add your name!" id="name"><br>
+        <p id="name-error" class="error"></p>
+
+        <label>Email</label>
+        <input type="email" placeholder="add your email!" id="email"><br>
+        <p id="email-error" class="error"></p>
+
+        <label>Bio</label>
+        <input type="text" placeholder="add bio!" id="bio"><br>
+        <p id="bio-error" class="error"></p>
+
+        <button type="submit">Submit</button>
+    </form>
+    <div class="profile" id="display-info"></div>
+
     <script src="js_sec6.js"></script>
 </body>
-</html>
 
+</html>
