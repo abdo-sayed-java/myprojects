@@ -1,0 +1,81 @@
+{% extends "core/base.html" %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Shopping Cart</h1>
+    
+    {% if cart.items.all %}
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        {% for item in cart.items.all %}
+                        <div class="cart-item d-flex">
+                            <div class="flex-shrink-0">
+                                <img src="{% if item.book.cover_image %}{{ item.book.cover_image.url }}{% else %}https://via.placeholder.com/100x150?text=No+Cover{% endif %}" 
+                                     alt="{{ item.book.title }}" width="80">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5>{{ item.book.title }}</h5>
+                                <p class="text-muted">{{ item.book.author }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <form action="{% url 'cart:cart_remove' item.id %}" method="post" class="d-flex align-items-center">
+                                        {% csrf_token %}
+                                        <div class="input-group" style="width: 120px;">
+                                            <button class="btn btn-outline-secondary quantity-btn minus" type="button">-</button>
+                                            <input type="number" class="form-control text-center quantity-input" 
+                                                   name="quantity" value="{{ item.quantity }}" min="1" max="20">
+                                            <button class="btn btn-outline-secondary quantity-btn plus" type="button">+</button>
+                                        </div>
+                                        <button type="submit" class="btn btn-link text-danger ms-3">
+                                            <i class="fas fa-trash-alt"></i> Remove
+                                        </button>
+                                    </form>
+                                    <div class="text-end">
+                                        <p class="mb-0">${{ item.price }} each</p>
+                                        <h5 class="mb-0">${{ item.total_price }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if not forloop.last %}<hr>{% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Order Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Subtotal ({{ cart.total_items }} items)</span>
+                                <span>${{ cart.total_price }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Shipping</span>
+                                <span>$5.00</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between fw-bold">
+                                <span>Total</span>
+                                <span>${{ cart.total_price|add:5 }}</span>
+                            </li>
+                        </ul>
+                        <a href="{% url 'cart:checkout' %}" class="btn btn-primary w-100">Proceed to Checkout</a>
+                        <a href="{% url 'books:book_list' %}" class="btn btn-outline-secondary w-100 mt-2">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            Your cart is empty. <a href="{% url 'books:book_list' %}">Browse our books</a> to get started!
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

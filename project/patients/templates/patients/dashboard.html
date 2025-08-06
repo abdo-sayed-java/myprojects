@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard">
+    <h2>Welcome, {{ user.first_name }}</h2>
+    <p>Here is your health overview</p>
+
+    <a href="{% url 'book_appointment' %}" class="bookbtn">Book New Appointment</a>
+
+    <div class="cards-container">
+        <div class="card">
+            <h3>{{ appointments_count }}</h3>
+            <p>Appointments</p>
+        </div>
+        <div class="card">
+            <h3>{{ medical_records_count }}</h3>
+            <p>Medical Records</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Upcoming Appointments</h3>
+        {% if upcoming_appointments %}
+            <ul>
+                {% for app in upcoming_appointments %}
+                    <li>
+                        {{ app.date }} with {{ app.doctor.user.get_full_name }}
+                        <form action="{% url 'cancel_appointment' app.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background-color: #4996e6; color: white; border: none; padding: 4px 8px; border-radius: 4px; margin-left: 10px; cursor: pointer;">
+                                Cancel
+                            </button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No upcoming appointments</p>
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <h3>Recent Visits</h3>
+        {% if recent_visits %}
+            <ul>
+                {% for visit in recent_visits %}
+                    <li>{{ visit.date }}: {{ visit.notes }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No recent visits</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

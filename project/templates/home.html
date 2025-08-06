@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to Smart Clinic</h1>
+<p>Your complete healthcare solution</p>
+
+{% if user.is_authenticated and user.is_patient %}
+    <a href="{% url 'patient_dashboard' %}">Patient Dashboard</a>
+{% endif %}
+{% endblock %}

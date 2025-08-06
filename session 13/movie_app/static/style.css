@@ -1,0 +1,24 @@
+.container {
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    background-color: #f0f0f063;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+    margin-left: 15px;
+}
+.backbtn {
+    color: blue;
+    margin-left: 0;
+    font-size: 17px;
+}
+img {
+    width: 50px;
+    height: 50px;
+
+}

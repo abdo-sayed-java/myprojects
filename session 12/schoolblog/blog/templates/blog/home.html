@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Blog</title>
+</head>
+<body>
+    <h1>Welcome to School Blog</h1>
+    <p>Hello!</p>
+    {%for post in posts%}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <small>Posted on: {{ post.published_at }}</small>
+    {%endfor%}
+</body>
+</html> -->
+
+
+{% block content %}
+    {%if user.is_authenticated %}
+        <a href="{% url 'create-post' %}">Add Post</a>
+    {%endif%}
+
+    {%for post in posts%}
+        <div>
+            <h3>{{ post.title}}</h3>
+            <p>{{ post.content|linebreaks}}</p>
+            <small>Created By: {{ post.author.username}}</small>
+        </div>
+        <hr>
+    {%empty%}
+        <p>No posts to view.</p>
+    {%endfor%}
+{% endblock %}

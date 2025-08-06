@@ -1,0 +1,57 @@
+{% extends "core/base.html" %}
+
+{% block title %}Welcome to BookStore{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to BookStore</h1>
+    <p class="lead">Your one-stop shop for all your reading needs</p>
+    <hr class="my-4">
+    <p>Browse our extensive collection of books from various genres and authors.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'books:book_list' %}" role="button">Browse Books</a>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-book-open fa-2x mb-3 text-primary"></i><br>Wide Selection</h5>
+                <p class="card-text">Thousands of books across all genres to satisfy every reader's taste.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-truck fa-2x mb-3 text-primary"></i><br>Fast Delivery</h5>
+                <p class="card-text">Get your books delivered quickly with our reliable shipping partners.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-headset fa-2x mb-3 text-primary"></i><br>Great Support</h5>
+                <p class="card-text">Our customer service team is always ready to help with any questions.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="mt-5 mb-4">Featured Books</h2>
+<div class="row">
+    {% for book in featured_books %}
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="card book-card h-100">
+            <img src="{{ book.cover_image.url }}" class="card-img-top book-card-img" alt="{{ book.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <p class="card-text text-muted">{{ book.author }}</p>
+                <p class="book-price">${{ book.price }}</p>
+                <a href="{{ book.get_absolute_url }}" class="btn btn-outline-primary btn-sm">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

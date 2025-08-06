@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST">
+    <input type="text" name="movie" placeholder="Movie name" required>
+    <button type="submit">Add</button>
+</form>
+<br>
+<a class="backbtn" href="{{ url_for('index') }}">Back</a>
+{% endblock %}

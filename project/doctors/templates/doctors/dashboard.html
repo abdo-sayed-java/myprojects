@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard">
+    <h1>Welcome Dr. {{ user.get_full_name }}</h1>
+
+    <div class="cards-container">
+        <div class="card">
+            <h2>Appointments</h2>
+            <p>{{ appointments_count }}</p>
+        </div>
+        <div class="card">
+            <h2>Patients</h2>
+            <p>{{ patients_count }}</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Recent Appointments</h2>
+        <ul>
+            {% for appt in appointments %}
+                <li>
+                    {{ appt.date }} - {{ appt.time }} with {{ appt.patient.get_full_name }}
+                </li>
+            {% empty %}
+                <li>No recent appointments.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

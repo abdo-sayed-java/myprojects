@@ -1,0 +1,104 @@
+{% load static %}
+<footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <!-- About Column -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="{% static 'images/logo-white.png' %}" alt="BookStore Logo" height="40" class="me-2">
+                    <h5 class="mb-0">BookStore</h5>
+                </div>
+                <p class="text-muted">
+                    Your one-stop destination for all your reading needs. We offer a wide selection of books across all genres.
+                </p>
+                <div class="social-icons mt-3">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-goodreads"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="{% url 'core:home' %}" class="text-muted text-decoration-none">Home</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{% url 'books:book_list' %}" class="text-muted text-decoration-none">Shop</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{% url 'core:about' %}" class="text-muted text-decoration-none">About Us</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{% url 'core:contact' %}" class="text-muted text-decoration-none">Contact</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="text-muted text-decoration-none">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Categories Column -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4">Categories</h5>
+                <ul class="list-unstyled">
+                    {% for category in categories|slice:":5" %}
+                    <li class="mb-2">
+                        <a href="{{ category.get_absolute_url }}" class="text-muted text-decoration-none">
+                            {{ category.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                    <li>
+                        <a href="{% url 'books:book_list' %}" class="text-muted text-decoration-none">
+                            View All Categories <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Column -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-uppercase mb-4">Newsletter</h5>
+                <p class="text-muted">Subscribe to get updates on new arrivals and special offers</p>
+                <form class="mt-4">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your Email" aria-label="Your Email">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="privacyPolicy">
+                        <label class="form-check-label text-muted small" for="privacyPolicy">
+                            I agree to the <a href="#" class="text-decoration-none">Privacy Policy</a>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <hr class="my-4 bg-secondary">
+
+        <div class="row align-items-center">
+            <!-- Copyright -->
+            <div class="col-md-6 text-center text-md-start">
+                <p class="small text-muted mb-0">
+                    &copy; {% now "Y" %} BookStore. All rights reserved.
+                </p>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="col-md-6 text-center text-md-end">
+                <img src="{% static 'images/payment-methods/visa.png' %}" alt="Visa" class="me-2" height="25">
+                <img src="{% static 'images/payment-methods/mastercard.png' %}" alt="Mastercard" class="me-2" height="25">
+                <img src="{% static 'images/payment-methods/paypal.png' %}" alt="PayPal" class="me-2" height="25">
+                <img src="{% static 'images/payment-methods/apple-pay.png' %}" alt="Apple Pay" height="25">
+            </div>
+        </div>
+    </div>
+</footer>

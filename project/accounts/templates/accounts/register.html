@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Register</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="regbtn">Register</button>
+  </form>
+
+  <script>
+    const roleSelect = document.getElementById("id_role");
+    const specializationField = document.getElementById("id_specialization").parentElement;
+
+    function toggleSpecialization() {
+      if (roleSelect.value === "doctor") {
+        specializationField.style.display = "block";
+      } else {
+        specializationField.style.display = "none";
+      }
+    }
+
+    toggleSpecialization();
+    roleSelect.addEventListener("change", toggleSpecialization);
+  </script>
+{% endblock %}

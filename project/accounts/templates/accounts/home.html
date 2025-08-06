@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1>Welcome to Smart Clinic</h1>
+  <p>Your complete healthcare solution</p>
+
+  <h2>Available Doctors</h2>
+  <ul>
+    <div class="doctors-grid">
+        {% for doctor in doctors %}
+            <div class="doctor-card">
+                {% if doctor.photo %}
+                    <img src="{{ doctor.photo.url }}" alt="Doctor Photo" class="doctor-img">
+                {% else %}
+                    <img src="{% static 'images/doctor.jpg' %}" alt="Doctor Photo" class="doctor-img">
+                {% endif %}
+                <h3>{{ doctor.user.get_full_name }}</h3>
+                <p><strong>Specialization:</strong> {{ doctor.specialization }}</p>
+                <p><strong>Email:</strong> {{ doctor.user.email }}</p>
+                <a href="{% url 'book_appointment' %}?doctor_id={{ doctor.id }}" class="bookbtn">Book Appointment</a>
+            </div>
+        {% empty %}
+            <p>No doctors available at the moment.</p>
+        {% endfor %}
+    </div>
+  </ul>
+{% endblock %}

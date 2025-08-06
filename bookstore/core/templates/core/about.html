@@ -1,0 +1,57 @@
+{% extends "core/base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">About BookStore</h1>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Our Story</h2>
+            <p>Founded in 2023, BookStore began as a small online shop with a passion for connecting readers with great books. What started as a hobby quickly grew into a thriving business as more and more book lovers discovered our carefully curated selection.</p>
+            <p>Today, we're proud to offer one of the most diverse collections of books online, with titles spanning every genre imaginable.</p>
+        </div>
+        <div class="col-md-6">
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-fluid rounded" alt="Bookstore interior">
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-md-6 order-md-2">
+            <h2>Our Mission</h2>
+            <p>At BookStore, we believe in the transformative power of books. Our mission is to:</p>
+            <ul>
+                <li>Make quality books accessible to everyone</li>
+                <li>Support authors and publishers</li>
+                <li>Foster a love of reading in our community</li>
+                <li>Provide exceptional customer service</li>
+            </ul>
+        </div>
+        <div class="col-md-6 order-md-1">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-fluid rounded" alt="Person reading a book">
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2>Meet the Team</h2>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="rounded-circle mb-3" width="150" alt="Team member">
+            <h4>Sarah Johnson</h4>
+            <p class="text-muted">Founder & CEO</p>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" class="rounded-circle mb-3" width="150" alt="Team member">
+            <h4>Michael Chen</h4>
+            <p class="text-muted">Head of Operations</p>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle mb-3" width="150" alt="Team member">
+            <h4>Emily Rodriguez</h4>
+            <p class="text-muted">Customer Experience</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
